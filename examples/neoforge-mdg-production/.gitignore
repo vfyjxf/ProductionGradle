@@ -1,0 +1,9 @@
+.gradle/
+.idea/
+build/
+gradle/
+gradlew
+gradlew.bat
+run/
+run-production/
+src/generated/resources/

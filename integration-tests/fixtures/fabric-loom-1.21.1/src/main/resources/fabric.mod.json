@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "production_gradle_fabric_fixture",
+  "version": "1.0.0",
+  "name": "ProductionGradle Fabric Fixture",
+  "environment": "*",
+  "entrypoints": {},
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "1.21.1"
+  }
+}

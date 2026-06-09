@@ -1,0 +1,9 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "production_gradle_neogradle_fixture"
+version = "1.0.0"
+displayName = "ProductionGradle NeoGradle Fixture"
+description = "Minimal NeoGradle fixture for ProductionGradle."

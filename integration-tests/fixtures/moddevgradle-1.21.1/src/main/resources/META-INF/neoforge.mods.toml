@@ -1,0 +1,9 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "production_gradle_moddev_fixture"
+version = "1.0.0"
+displayName = "ProductionGradle ModDevGradle Fixture"
+description = "Minimal ModDevGradle fixture for ProductionGradle."

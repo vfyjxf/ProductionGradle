@@ -1,0 +1,28 @@
+plugins {
+    id "java"
+    id "dev.vfyjxf.gradle.production"
+}
+
+def javaExecutableName = System.getProperty("os.name", "").toLowerCase().contains("win") ? "java.exe" : "java"
+
+production {
+    instanceDir = file("run-production")
+    idea {
+        overwrite = true
+    }
+    runs {
+        client {
+            minecraftVersion = "1.21.1"
+            loader = "vanilla"
+            javaExecutable = file(new File(new File(System.getProperty("java.home"), "bin"), javaExecutableName))
+        }
+        server {
+            minecraftVersion = "1.21.1"
+            loader = "vanilla"
+            eula true
+            jvmArgs "-Xmx1G"
+            gameArgs "nogui"
+            javaExecutable = file(new File(new File(System.getProperty("java.home"), "bin"), javaExecutableName))
+        }
+    }
+}

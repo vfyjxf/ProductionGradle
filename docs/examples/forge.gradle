@@ -1,0 +1,44 @@
+plugins {
+    id "net.minecraftforge.gradle" version "6.0.26"
+    id "dev.vfyjxf.gradle.production"
+}
+
+repositories {
+    mavenCentral()
+    maven { url = uri("https://maven.minecraftforge.net/") }
+    maven { url = uri("https://api.modrinth.com/maven") }
+}
+
+minecraft {
+    mappings channel: "official", version: "1.21.1"
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:1.21.1-52.0.28"
+}
+
+production {
+    runs.configureEach {
+        javaVersion = 21
+        loader = "forge"
+        loaderVersion = "52.0.28"
+        mods {
+            includeProject true
+            includeRequiredDependencies true
+            includeOptionalDependencies false
+            add "maven.modrinth:jade:15.10.2+forge"
+        }
+    }
+
+    runs {
+        client {
+            type = "client"
+        }
+        server {
+            type = "server"
+            eula true
+            jvmArgs "-Xmx2G"
+            gameArgs "nogui"
+        }
+    }
+}

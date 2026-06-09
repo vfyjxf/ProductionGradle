@@ -1,0 +1,15 @@
+pluginManagement {
+    includeBuild("../..")
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url = uri("https://maven.covers1624.net/") }
+        maven { url = uri("https://maven.minecraftforge.net/") }
+    }
+}
+
+plugins {
+    id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
+}
+
+rootProject.name = "forge-gradle-production-1-21-1-example"

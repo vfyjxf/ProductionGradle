@@ -1,0 +1,21 @@
+plugins {
+    id "net.neoforged.moddev" version "2.0.107"
+    id "dev.vfyjxf.gradle.production"
+}
+
+version = "1.0.0"
+group = "dev.vfyjxf.gradle.fixture"
+
+neoForge {
+    version = "21.1.172"
+}
+
+production {
+    autoDetect true
+    idea {
+        overwrite = true
+    }
+    runs.configureEach {
+        mainClass = "dev.vfyjxf.gradle.fixture.DoesNotLaunch"
+    }
+}

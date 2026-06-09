@@ -1,0 +1,123 @@
+plugins {
+    id "java-library"
+    id "net.minecraftforge.gradle" version "6.0.53"
+    id "dev.vfyjxf.gradle.production"
+    id "idea"
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    maven { url = uri("https://libraries.minecraft.net/") }
+    maven { url = uri("https://maven.minecraftforge.net/") }
+    mavenCentral()
+}
+
+minecraft {
+    mappings channel: "official", version: minecraft_version
+
+    runs {
+        client {
+            workingDirectory project.file("run/client")
+            property "forge.logging.markers", "REGISTRIES"
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            workingDirectory project.file("run/server")
+            args "--nogui"
+            property "forge.logging.markers", "REGISTRIES"
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+}
+
+tasks.named("processResources", ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            forge_version          : forge_version,
+            forge_version_range    : forge_version_range,
+            loader_version_range   : loader_version_range,
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_license            : mod_license,
+            mod_version            : mod_version,
+    ]
+    inputs.properties replaceProperties
+    filesMatching("META-INF/mods.toml") {
+        expand replaceProperties
+    }
+}
+
+production {
+    autoDetect true
+
+    idea {
+        overwrite = true
+    }
+
+    runs.configureEach {
+        javaVersion = 21
+        userName = "ProductionForge1211"
+        mods {
+            includeProject true
+            includeRequiredDependencies true
+            includeOptionalDependencies false
+        }
+    }
+
+    runs {
+        client {
+            type = "client"
+            instanceDir = file("run-production/client")
+            jvmArgs "-Xmx2G"
+        }
+        microsoftClient {
+            type = "client"
+            instanceDir = file("run-production/microsoft-client")
+            microsoftAuth = true
+            jvmArgs "-Xmx2G"
+        }
+        server {
+            type = "server"
+            instanceDir = file("run-production/server")
+            eula true
+            jvmArgs "-Xmx2G"
+            gameArgs "nogui"
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
+}

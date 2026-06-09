@@ -1,21 +1,11 @@
-.gradle
+.worktrees/
+.gradle/
+.gradle-test-home/
+.idea/
+.DS_Store
+build/
 **/build/
-!**/src/**/build/
-
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Avoid ignore Gradle wrappper properties
-!gradle-wrapper.properties
-
-# Cache of project
-.gradletasknamecache
-
-# Eclipse Gradle plugin generated files
-# Eclipse Core
-.project
-# JDT-specific (Eclipse Java Development Tools)
-.classpath
+integration-tests/fixtures/**/.idea/
+integration-tests/fixtures/**/generated-e2e/
+integration-tests/fixtures/**/production-cache/
+integration-tests/fixtures/**/run-production/

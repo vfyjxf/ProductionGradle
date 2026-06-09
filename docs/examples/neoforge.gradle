@@ -1,0 +1,42 @@
+plugins {
+    id "net.neoforged.gradle.userdev" version "7.0.192"
+    id "dev.vfyjxf.gradle.production"
+}
+
+repositories {
+    mavenCentral()
+    maven { url = uri("https://maven.neoforged.net/releases") }
+    maven { url = uri("https://api.modrinth.com/maven") }
+}
+
+dependencies {
+    implementation "net.neoforged:neoforge:21.1.172"
+}
+
+production {
+    runs.configureEach {
+        javaVersion = 21
+        loader = "neoforge"
+        loaderVersion = "21.1.172"
+        mods {
+            includeProject true
+            includeRequiredDependencies true
+            includeOptionalDependencies false
+            add "maven.modrinth:jade:15.10.2+neoforge"
+        }
+    }
+
+    runs {
+        client {
+            type = "client"
+            instanceDir = file("run-production/neoforge-client")
+        }
+        server {
+            type = "server"
+            instanceDir = file("run-production/neoforge-server")
+            eula true
+            jvmArgs "-Xmx2G"
+            gameArgs "nogui"
+        }
+    }
+}

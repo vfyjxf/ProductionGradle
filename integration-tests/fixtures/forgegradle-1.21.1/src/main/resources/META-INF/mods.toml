@@ -1,0 +1,9 @@
+modLoader = "javafml"
+loaderVersion = "[52,)"
+license = "MIT"
+
+[[mods]]
+modId = "production_gradle_forge_fixture"
+version = "1.0.0"
+displayName = "ProductionGradle Forge Fixture"
+description = "Minimal ForgeGradle fixture for ProductionGradle."
