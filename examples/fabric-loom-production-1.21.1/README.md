@@ -4,6 +4,13 @@ This example is based on the official `FabricMC/fabric-example-mod` `1.21.1` bra
 
 It keeps the official Fabric template structure and demonstrates ProductionGradle client, Microsoft-auth client, and server runs for Minecraft 1.21.1.
 
+The production client runs also demonstrate remote mod providers:
+
+- Fabric API from Modrinth.
+- JEI from CurseForge.
+
+CurseForge downloads require `production.curseforgeApiKey` in Gradle properties or `CURSEFORGE_API_KEY` in the environment.
+
 ## Try It
 
 From the repository root:

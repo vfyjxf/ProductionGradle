@@ -112,12 +112,24 @@ production {
             type = "client"
             instanceDir = file("run-production/client")
             jvmArgs "-Xmx2G"
+            mods {
+                curseforge("jei") {
+                    projectId = 238222
+                    fileId = 7420587
+                }
+            }
         }
         microsoftClient {
             type = "client"
             instanceDir = file("run-production/microsoft-client")
             microsoftAuth = true
             jvmArgs "-Xmx2G"
+            mods {
+                curseforge("jei") {
+                    projectId = 238222
+                    fileId = 7420587
+                }
+            }
         }
         server {
             type = "server"

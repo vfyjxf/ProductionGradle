@@ -7,6 +7,7 @@ This is a complete manual example project based on the NeoForge 1.21.1 ModDevGra
 - A normal ModDevGradle development project using `net.neoforged.moddev`.
 - ProductionGradle auto-detection of Minecraft and NeoForge versions.
 - The current project mod being included in production runs.
+- CurseForge JEI as a client-only production mod.
 - Production client and server runs using `runProductionClient` and `runProductionServer`.
 - IDEA run configuration import during IntelliJ Gradle sync.
 
@@ -36,3 +37,5 @@ To keep the cache local to this repository while experimenting:
 ```
 
 The server run accepts the EULA for this disposable example and writes its production instance under `run-production/server`.
+
+CurseForge downloads require `production.curseforgeApiKey` in Gradle properties or `CURSEFORGE_API_KEY` in the environment.

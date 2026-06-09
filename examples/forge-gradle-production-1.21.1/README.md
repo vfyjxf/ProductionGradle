@@ -7,6 +7,7 @@ This is a complete ForgeGradle project for Minecraft 1.21.1. It uses this reposi
 - A normal ForgeGradle development project.
 - ProductionGradle auto-detection of Minecraft and Forge versions.
 - The current project mod being included in production runs through the reobfuscated jar fallback when available.
+- CurseForge JEI as a client-only production mod.
 - Client, Microsoft-auth client, and server production runs.
 - IDEA application run configuration import during IntelliJ Gradle sync.
 
@@ -34,3 +35,5 @@ To keep the cache local to this repository while experimenting:
 ```bash
 ./gradlew --gradle-user-home ../../.gradle runProductionClient
 ```
+
+CurseForge downloads require `production.curseforgeApiKey` in Gradle properties or `CURSEFORGE_API_KEY` in the environment.

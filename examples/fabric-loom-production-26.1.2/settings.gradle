@@ -15,5 +15,4 @@ plugins {
 	id "org.gradle.toolchains.foojay-resolver-convention" version "1.0.0"
 }
 
-// Should match your modid
-rootProject.name = 'modid'
+rootProject.name = "fabric-loom-production-26-1-2-example"
