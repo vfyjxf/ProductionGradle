@@ -1,5 +1,7 @@
 plugins {
     id "java-gradle-plugin"
+    id "com.gradle.plugin-publish"
+    id "com.gradleup.shadow"
 }
 
 dependencies {
@@ -13,12 +15,19 @@ dependencies {
 }
 
 gradlePlugin {
+    website = "https://github.com/vfyjxf/ProductionGradle"
+    vcsUrl = "https://github.com/vfyjxf/ProductionGradle.git"
     plugins {
         production {
             id = "dev.vfyjxf.gradle.production"
             implementationClass = "dev.vfyjxf.gradle.production.ProductionGradlePlugin"
             displayName = "ProductionGradle"
             description = "Launches production Minecraft clients and servers from Gradle mod development projects."
+            tags.set(["minecraft", "modding", "fabric", "forge", "neoforge"])
         }
     }
+}
+
+tasks.named("shadowJar", com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    archiveClassifier = ""
 }

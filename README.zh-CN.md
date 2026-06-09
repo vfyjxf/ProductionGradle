@@ -1,5 +1,7 @@
 # ProductionGradle
 
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/dev.vfyjxf.gradle.production?label=plugin%20portal)](https://plugins.gradle.org/plugin/dev.vfyjxf.gradle.production)
+
 ProductionGradle 是一个 Gradle 插件，用于直接从模组开发工程启动接近真实生产环境的 Minecraft。它会生成启动规格文件，解析 Minecraft 运行时文件到 Gradle user home 缓存，装配当前工程和远程下载的 mod，注册 Gradle 运行任务，并在 IntelliJ IDEA 同步 Gradle 工程时贡献 IDEA Application 运行配置。
 
 ProductionGradle 使用 Java 编写，目标是 Fabric Loom、ForgeGradle、NeoGradle 和 NeoForge ModDevGradle 等模组开发工程。

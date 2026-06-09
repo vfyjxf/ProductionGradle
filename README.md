@@ -1,5 +1,7 @@
 # ProductionGradle
 
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/dev.vfyjxf.gradle.production?label=plugin%20portal)](https://plugins.gradle.org/plugin/dev.vfyjxf.gradle.production)
+
 ProductionGradle is a Gradle plugin for running Minecraft in a production-like environment directly from mod development builds. It generates launch specifications, resolves Minecraft runtime files into the Gradle user home cache, stages project and remote mods, creates Gradle run tasks, and contributes IntelliJ IDEA application run configurations during Gradle sync.
 
 ProductionGradle is written in Java and is intended for mod projects that use Fabric Loom, ForgeGradle, NeoGradle, or NeoForge ModDevGradle.

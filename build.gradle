@@ -1,6 +1,26 @@
+plugins {
+    id "com.vanniktech.maven.publish" version "0.36.0" apply false
+    id "com.gradle.plugin-publish" version "2.1.1" apply false
+    id "com.gradleup.shadow" version "9.3.0" apply false
+}
+
+def publishedProjectNames = [
+        "launcher-core",
+        "launcher-cli",
+        "gradle-adapters",
+        "mod-providers"
+] as Set
+
+def productionGradleDescription = "Launches production Minecraft clients and servers from Gradle mod development projects."
+def productionGradleUrl = "https://github.com/vfyjxf/ProductionGradle"
+def productionGradleVersion = providers.gradleProperty("VERSION_NAME")
+        .orElse(providers.gradleProperty("versionName"))
+        .orElse("0.1.0-SNAPSHOT")
+        .get()
+
 allprojects {
     group = "dev.vfyjxf.gradle"
-    version = "0.1.0-SNAPSHOT"
+    version = productionGradleVersion
 }
 
 subprojects {
@@ -30,5 +50,45 @@ subprojects {
         testImplementation "org.junit.jupiter:junit-jupiter"
         testImplementation "org.assertj:assertj-core:3.27.3"
         testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+    }
+
+    if (publishedProjectNames.contains(name)) {
+        apply plugin: "com.vanniktech.maven.publish"
+
+        mavenPublishing {
+            publishToMavenCentral()
+            signAllPublications()
+
+            configure(new com.vanniktech.maven.publish.JavaLibrary(
+                    new com.vanniktech.maven.publish.JavadocJar.Empty(),
+                    new com.vanniktech.maven.publish.SourcesJar.Sources()
+            ))
+
+            pom {
+                name = "ProductionGradle ${project.name}"
+                description = productionGradleDescription
+                inceptionYear = "2026"
+                url = productionGradleUrl
+                licenses {
+                    license {
+                        name = "MIT License"
+                        url = "${productionGradleUrl}/blob/main/LICENSE"
+                        distribution = "repo"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "vfyjxf"
+                        name = "vfyjxf"
+                        url = "https://github.com/vfyjxf"
+                    }
+                }
+                scm {
+                    url = productionGradleUrl
+                    connection = "scm:git:git://github.com/vfyjxf/ProductionGradle.git"
+                    developerConnection = "scm:git:ssh://git@github.com/vfyjxf/ProductionGradle.git"
+                }
+            }
+        }
     }
 }
